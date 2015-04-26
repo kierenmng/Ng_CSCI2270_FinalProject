@@ -40,6 +40,7 @@ int main()
     b.printBoard();
     while(inGame == true)
     {
+        //Counter to check which player, 1 or 2 is going.
         if(counter%2 == 1 || counter==0)
         {
             printOptions(1);
@@ -84,6 +85,7 @@ int main()
             b.takeTopPieceFromColumn(choice);
         }
         b.printBoard();
+        //Checks to see if anybody won.
         if(b.checkHorizontal() || b.checkVertical() || b.checkDiagonalGoingDown() || b.checkDiagonalGoingUp())
         {
             if(counter%2==1 || counter == 0)
