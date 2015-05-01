@@ -4,6 +4,8 @@ Project summary-
 
 How to Run-
   There are no external files to read in, the only files needed are "FinaLProject.cpp", "Board.h", and "Board.cpp". To use the program after you run it, all you need to do is follow the menus. The program will display the connect four board every turn, 1's representing player 1's pieces, and 2's representing player 2's pieces. The zeroes represent empty spaces.
+  
+  Edit- Forgot to add other files like the cbp file, what you can do in codeblocks is create a project with the same .cpp and .h names as what I named mine. (Didnt't add the other files because of due date, I hope you understand, sorry!)
 
 Dependencies-
 N/A
