@@ -33,7 +33,8 @@ int main()
 {
     int counter = 0;
     Board b;
-    int choice;
+    string choice;
+    int intChoice;
     bool inGame = true;
     printMenu();
     b.setUpBoard();
@@ -53,20 +54,20 @@ int main()
         }
         cin>>choice;
         cin.ignore();
-        if(choice==1)
+        if(choice=="1")
         {
             cout<<"What column (1-7) would you like to choose?"<<endl;
-            cin>>choice;
+            cin>>intChoice;
             if(counter%2==1 || counter == 0)
             {
-                b.setPieceInColumn(0,choice);
+                b.setPieceInColumn(0,intChoice);
             }
             else if(counter%2==0 || counter==1)
             {
-                b.setPieceInColumn(1,choice);
+                b.setPieceInColumn(1,intChoice);
             }
         }
-        else if(choice==2)
+        else if(choice=="2")
         {
             cout<<"Chose random column."<<endl;
             if(counter%2==1 || counter == 0)
@@ -78,11 +79,11 @@ int main()
                 b.setRandomPiece(1);
             }
         }
-        else if (choice==42)
+        else if (choice=="42")
         {
             cout<<"Friendship ruiner. What column (1-7) would you like to take the \ntop piece out of?"<<endl;
-            cin>>choice;
-            b.takeTopPieceFromColumn(choice);
+            cin>>intChoice;
+            b.takeTopPieceFromColumn(intChoice);
         }
         b.printBoard();
         //Checks to see if anybody won.
