@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Board.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ int main()
 {
     int counter = 0;
     Board b;
-    int choice;
+    string choice;
     bool inGame = true;
     printMenu();
     b.setUpBoard();
@@ -51,22 +52,43 @@ int main()
             printOptions(2);
             counter++;
         }
-        cin>>choice;
-        cin.ignore();
-        if(choice==1)
+
+        bool validInput = false;
+        while(!validInput) {
+            validInput = true;
+            getline(cin, choice);
+
+            if(choice != "1" && choice != "2" && choice != "42") {
+                validInput = false;
+                cout<<"Please enter either \"1\", \"2\", or \"42\".";
+            }
+        }
+
+        if(choice=="1")
         {
             cout<<"What column (1-7) would you like to choose?"<<endl;
-            cin>>choice;
+
+            validInput = false;
+            while(!validInput) {
+                validInput = true;
+                getline(cin, choice);
+
+                if(atoi(choice.c_str()) < 1 || atoi(choice.c_str()) > 7) {
+                    validInput = false;
+                    cout<<"Please enter a number between 1 and 7.";
+                }
+            }
+
             if(counter%2==1 || counter == 0)
             {
-                b.setPieceInColumn(0,choice);
+                b.setPieceInColumn(0,atoi(choice.c_str()));
             }
             else if(counter%2==0 || counter==1)
             {
-                b.setPieceInColumn(1,choice);
+                b.setPieceInColumn(1,atoi(choice.c_str()));
             }
         }
-        else if(choice==2)
+        else if(choice=="2")
         {
             cout<<"Chose random column."<<endl;
             if(counter%2==1 || counter == 0)
@@ -78,11 +100,22 @@ int main()
                 b.setRandomPiece(1);
             }
         }
-        else if (choice==42)
+        else if (choice=="42")
         {
             cout<<"Friendship ruiner. What column (1-7) would you like to take the \ntop piece out of?"<<endl;
-            cin>>choice;
-            b.takeTopPieceFromColumn(choice);
+
+            validInput = false;
+            while(!validInput) {
+                validInput = true;
+                getline(cin, choice);
+
+                if(atoi(choice.c_str()) < 1 || atoi(choice.c_str()) > 7) {
+                    validInput = false;
+                    cout<<"Please enter a number between 1 and 7.";
+                }
+            }
+
+            b.takeTopPieceFromColumn(atoi(choice.c_str()));
         }
         b.printBoard();
         //Checks to see if anybody won.
