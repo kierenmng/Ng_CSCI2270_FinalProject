@@ -31,7 +31,7 @@ void printOptions(int playerNumber)
 
 int main()
 {
-    int counter = 0;
+    int counter = 2;
     Board b;
     int choice;
     bool inGame = true;
@@ -41,12 +41,12 @@ int main()
     while(inGame == true)
     {
         //Counter to check which player, 1 or 2 is going.
-        if(counter%2 == 1 || counter==0)
+        if(counter%2 == 0)
         {
             printOptions(1);
             counter++;
         }
-        else if(counter%2 == 0 || counter==1)
+        else
         {
             printOptions(2);
             counter++;
@@ -83,6 +83,11 @@ int main()
             cout<<"Friendship ruiner. What column (1-7) would you like to take the \ntop piece out of?"<<endl;
             cin>>choice;
             b.takeTopPieceFromColumn(choice);
+        }
+        else
+        {
+            cout <<"Wrong choice entered." << endl;
+            counter--;
         }
         b.printBoard();
         //Checks to see if anybody won.
